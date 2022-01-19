@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p><strong>user:</strong> {{ solution.user.username }}</p>
+    <p><strong>problem:</strong> {{ solution.problem.short_name }}</p>
+    <p><strong>code:</strong> {{ solution.code }}</p>
+    <p><strong>lang:</strong> {{ solution.lang }}</p>
+    <p><strong>result:</strong> {{ solution.result }}</p>
+    <p><strong>judge_id:</strong> {{ solution.judge_id }}</p>
+    <p><strong>test_count:</strong> {{ solution.test_count }}</p>
+    <p><strong>created:</strong> {{ solution.created }}</p>
+    <p><strong>modified:</strong> {{ solution.modified }}</p>
+{% endblock %}
