@@ -16,3 +16,12 @@ def request_to_check_system(data: dict) -> str:
     except Exception as e:
             print(e, data)
             return ''
+
+
+def request_judge_id(data: dict) -> int:
+    ''' Запрашиваем judge_id от тестирующей системы '''
+    data['ActionNature'] = 'SubmitRun'
+    response_judge_id = request_to_check_system(data)
+    if response_judge_id:
+        judge_id = int(response_judge_id.splitlines()[-1])
+        return judge_id
