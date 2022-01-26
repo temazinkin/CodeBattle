@@ -25,3 +25,16 @@ def request_judge_id(data: dict) -> int:
     if response_judge_id:
         judge_id = int(response_judge_id.splitlines()[-1])
         return judge_id
+
+
+def request_result(data: dict) -> tuple:
+    ''' Запрашиваем judge_id от тестирующей системы '''
+    data['ActionNature'] = 'RunStatus'
+    response_result = request_to_check_system(data)
+    if response_result:
+        result_all = response_result.splitlines()[-1].split(';')
+        result, tests = result_all[6:8]
+        if tests:
+            tests = int(tests)
+            return (result, tests)
+        return (result, 0)
